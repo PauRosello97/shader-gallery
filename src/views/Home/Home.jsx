@@ -16,7 +16,7 @@ function Home() {
 
     useEffect(() => {
         if (shaders && shaders[selectedShaderNumber]) {
-            setSelectedShader(shaders[selectedShaderNumber].code);
+            setSelectedShader(shaders[selectedShaderNumber]);
         }
     }, [selectedShaderNumber, shaders]);
 
@@ -39,11 +39,12 @@ function Home() {
 
     return (
         <div className="Home" >
+            <div className="title">{selectedShader.title}</div>
             <div onClick={handleClickLeft} className="btn" />
             {shaders && <ShaderCanvas
                 width={height}
                 height={height}
-                fragShader={selectedShader}
+                fragShader={selectedShader.code}
                 uniforms={uniforms}
             />}
             <div onClick={handleClickRight} className="btn" />
