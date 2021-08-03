@@ -12,6 +12,7 @@ float kL = 7.67;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
+uniform float u_initial_time;
 vec2 st;
 
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -148,7 +149,7 @@ vec3 getColor(float i){
   float TWO_PI = 6.28318530718;
   float M = 1./2.;
   float P = TWO_PI/255.;
-  float t =-u_time;
+  float t =-(u_time+u_initial_time);
 
   r = M+M*sin(sin((i+t)*3.*P)*i*P/2.);
   g = M+M*sin(sin((i+t)*4.*P)*i*P);
@@ -169,7 +170,7 @@ void main() {
 
     float hue = 0.;
     float luminance = .5;
-    float t = u_time*.001;
+    float t = u_initial_time+u_time*.001;
 
     float distortionDetail = 3.;
     float distortionX = cnoise(vec3(st*distortionDetail, 100.+t))-.5;

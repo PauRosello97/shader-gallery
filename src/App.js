@@ -1,7 +1,7 @@
 import ShaderCanvas from "@signal-noise/react-shader-canvas";
-
 import shader from "./assets/shader";
 import useWindowDimensions from "./hooks/window";
+import Home from "./views/Home/Home";
 import './App.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <ShaderCanvas width={width} height={height} fragShader={shader} />
+      <Home />
     </div>
   );
 }
